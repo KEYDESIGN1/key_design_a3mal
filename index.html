@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أعمالي</title>
+    <link href="https://fonts.googleapis.com/css2?family=The+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* تخصيص الألوان عبر المتغيرات */
+        :root {
+            --main-color: #000000; /* اللون الأساسي (يمكن تغييره) */
+            --background-color: #f7f7f7; /* اللون الخلفية (يمكن تغييره) */
+            --top-bar-bg: rgba(0, 0, 0, 0.8); /* الشريط العلوي */
+            --border-thickness: 1px; /* سمك الحدود */
+            --section-one-bg: #000000; /* خلفية القسم الأول (سوداء) */
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            font-family: 'The Sans', sans-serif;
+            background-color: var(--background-color); /* استخدام اللون المحدد */
+        }
+
+        /* إضافة الخلفية */
+        body {
+            background-image: url('https://j.top4top.io/p_3272n7klb0.jpg'); /* رابط الصورة الخلفية */
+            background-size: cover; /* لضبط حجم الصورة لتغطية كامل الشاشة */
+            background-position: center; /* لضبط مكان الصورة في المنتصف */
+            background-attachment: fixed; /* تثبيت الخلفية أثناء التمرير */
+            position: relative;
+        }
+
+        /* الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--top-bar-bg);
+            color: white;
+            padding: 8px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease-in-out;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .top-bar .logo {
+            height: 30px;
+            margin-right: 20px;
+        }
+
+        .top-bar .logo img {
+            height: 100%;
+            border-radius: 50%; /* جعل الشعار دائري */
+        }
+
+        /* تنسيق الأيقونات في الشريط العلوي */
+        .social-icons {
+            display: flex;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .social-icons img {
+            width: 30px; /* ضبط العرض ليكون 30px */
+            height: 30px; /* ضبط الارتفاع ليكون 30px */
+            transition: transform 0.3s ease;
+            filter: invert(1); /* تغيير اللون إلى الأبيض */
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 200px; /* المسافة بين الشريط العلوي والمحتوى */
+        }
+
+        /* تنسيق الشعار داخل الدائرة */
+        .logo-container {
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* تنسيق النص */
+        .heading {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--main-color); /* استخدام اللون الأسود */
+            margin-bottom: 10px;
+        }
+
+        .subheading {
+            font-size: 18px;
+            color: var(--main-color);
+        }
+
+        /* تنسيق الصور في القسم الثاني */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 0; /* لا يوجد فاصل بين الصور */
+            margin-top: -120px; /* رفع الصور باتجاه الأعلى أكثر */
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1; /* تحديد الترتيب بحيث لا تغطي الخلفية */
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: var(--border-thickness) solid #000000; /* الحدود بين الصور */
+            transition: transform 0.3s ease, filter 0.3s ease; /* إضافة التأثيرات */
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05); /* تكبير الصورة عند المرور */
+            filter: brightness(0.7); /* تقليل سطوع الصورة */
+        }
+
+        /* إضافة الفواصل بين الصور المتلاصقة */
+        .gallery div {
+            display: inline-block;
+            position: relative;
+        }
+
+        .gallery div::after {
+            content: "";
+            position: absolute;
+            width: var(--border-thickness);
+            background-color: #000000;
+            height: 100%;
+            right: 0;
+            top: 0;
+        }
+
+        /* إزالة الخط بعد آخر صورة في السطر */
+        .gallery div:last-child::after {
+            display: none;
+        }
+
+        /* رفع المسافة بين تصاميمي والصور */
+        .heading-second {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--main-color);
+            margin-bottom: 20px;
+            padding-top: 40px; /* رفع المسافة بين النص والصور */
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي مع الشعار وأيقونات التواصل الاجتماعي -->
+    <div class="top-bar" id="topBar">
+        <div class="logo">
+            <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">
+        </div>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/key_design_am/" target="_blank">
+                <img src="https://g.top4top.io/p_3271oamgl1.png" alt="إنستجرام">
+            </a>
+            <a href="https://www.tiktok.com/@key_design7" target="_blank">
+                <img src="https://f.top4top.io/p_3271837ug0.png" alt="تيك توك">
+            </a>
+            <a href="https://wa.me/966545473980" target="_blank">
+                <img src="https://h.top4top.io/p_3271w4xxr2.png" alt="واتساب">
+            </a>
+            <a href="mailto:keydesignam@gmail.com" target="_blank">
+                <img src="https://i.top4top.io/p_3271z5xqr3.png" alt="بريد إلكتروني">
+            </a>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <!-- الشعار داخل دائرة -->
+        <div class="logo-container">
+            <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">
+        </div>
+        
+        <!-- النص -->
+        <div class="heading">KEY_DESIGN</div>
+        <div class="subheading">هنا سترون بعض العلامات التجارية التي صممناها</div>
+    </div>
+
+    <!-- القسم الثاني (صور التصاميم) -->
+    <div class="content">
+        <!-- شبكة الصور -->
+        <div class="gallery">
+            <div>
+                <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="تصميم 1">
+            </div>
+            <div>
+                <img src="https://b.top4top.io/p_32728tewt1.jpg" alt="تصميم 2">
+            </div>
+            <div>
+                <img src="https://c.top4top.io/p_3272ady0a2.jpg" alt="تصميم 3">
+            </div>
+            <div>
+                <img src="https://d.top4top.io/p_32724t1iv3.jpg" alt="تصميم 4">
+            </div>
+            <div>
+                <img src="https://e.top4top.io/p_3272vo0zk4.jpg" alt

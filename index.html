@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KEY_DESIGN</title>
+    <title>معرض أعمالي</title>
     <link href="https://fonts.googleapis.com/css2?family=The+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -12,11 +12,13 @@
             box-sizing: border-box;
         }
 
+        /* تخصيص الألوان عبر المتغيرات */
         :root {
             --main-color: #000000;
             --background-color: #f7f7f7;
             --top-bar-bg: rgba(0, 0, 0, 0.8);
             --border-thickness: 1px;
+            --section-one-bg: #000000;
         }
 
         body, html {
@@ -24,8 +26,10 @@
             width: 100%;
             font-family: 'The Sans', sans-serif;
             background-color: var(--background-color);
+            position: relative; /* مهم لجعل الخلفية تظهر في خلفية الصفحة */
         }
 
+        /* الشريط العلوي */
         .top-bar {
             position: fixed;
             top: 0;
@@ -38,38 +42,60 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-radius: 0 0 15px 15px;
+            transition: background-color 0.3s ease-in-out;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .top-bar .logo img {
+        .top-bar .logo {
             height: 30px;
+            margin-right: 20px;
+        }
+
+        .top-bar .logo img {
+            height: 100%;
             border-radius: 50%;
+        }
+
+        /* تخصيص الأيقونات */
+        .social-icons {
+            display: flex;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
         }
 
         .social-icons img {
             width: 30px;
             height: 30px;
-            filter: invert(1);
             transition: transform 0.3s ease;
+            filter: invert(1);
         }
 
         .social-icons img:hover {
             transform: scale(1.2);
         }
 
+        /* الخلفية */
         .background {
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             background-image: url('https://j.top4top.io/p_3272n7klb0.jpg');
             background-size: cover;
             background-position: center;
-            z-index: -1;
+            background-attachment: fixed;
+            position: absolute; /* تحديد أن الخلفية تكون ثابتة في الصفحة */
+            top: 0;
+            left: 0;
+            z-index: -1; /* التأكد من أن الخلفية تكون تحت جميع العناصر */
         }
 
+        /* تنسيق المحتوى */
         .content {
             display: flex;
             flex-direction: column;
@@ -79,6 +105,7 @@
             padding-top: 200px;
         }
 
+        /* الشعار */
         .logo-container {
             width: 150px;
             height: 150px;
@@ -98,6 +125,7 @@
             object-fit: cover;
         }
 
+        /* النص */
         .heading {
             font-size: 32px;
             font-weight: bold;
@@ -110,27 +138,31 @@
             color: var(--main-color);
         }
 
+        /* تنسيق المعرض */
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 40px;
-            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 0; /* إزالة الفواصل بين الصور */
+            margin-top: -120px;
+            margin-bottom: 40px;
         }
 
         .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border: var(--border-thickness) solid #000000;
+            transition: transform 0.3s ease, filter 0.3s ease;
             cursor: pointer;
-            transition: transform 0.3s ease;
         }
 
         .gallery img:hover {
             transform: scale(1.05);
+            filter: brightness(0.7);
         }
 
-        /* نافذة عرض الصور */
-        .modal {
+        /* نافذة الصور المكبرة */
+        .lightbox {
             display: none;
             position: fixed;
             top: 0;
@@ -138,36 +170,52 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
         }
 
-        .modal img {
+        .lightbox img {
             max-width: 90%;
             max-height: 90%;
-            border: 5px solid white;
+            border-radius: 10px;
         }
 
-        .modal .close {
+        /* زر الإغلاق */
+        .lightbox .close {
             position: absolute;
             top: 20px;
-            right: 30px;
-            font-size: 30px;
+            right: 20px;
             color: white;
+            font-size: 30px;
             cursor: pointer;
         }
+
+        .lightbox .close:hover {
+            transform: scale(1.1);
+        }
+
     </style>
 </head>
 <body>
-    <!-- الشريط العلوي -->
-    <div class="top-bar">
+
+    <!-- الشريط العلوي مع الشعار وأيقونات التواصل الاجتماعي -->
+    <div class="top-bar" id="topBar">
         <div class="logo">
             <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">
         </div>
         <div class="social-icons">
             <a href="https://www.instagram.com/key_design_am/" target="_blank">
                 <img src="https://c.top4top.io/p_32759jen20.png" alt="إنستجرام">
+            </a>
+            <a href="https://www.tiktok.com/@key_design7" target="_blank">
+                <img src="https://f.top4top.io/p_3271837ug0.png" alt="تيك توك">
+            </a>
+            <a href="https://wa.me/966545473980" target="_blank">
+                <img src="https://h.top4top.io/p_3271w4xxr2.png" alt="واتساب">
+            </a>
+            <a href="mailto:keydesignam@gmail.com" target="_blank">
+                <img src="https://i.top4top.io/p_3271z5xqr3.png" alt="بريد إلكتروني">
             </a>
         </div>
     </div>
@@ -178,49 +226,41 @@
     <!-- المحتوى -->
     <div class="content">
         <div class="logo-container">
-            <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار">
+            <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">
         </div>
         <div class="heading">KEY_DESIGN</div>
         <div class="subheading">هنا سترون بعض العلامات التجارية التي صممناها</div>
     </div>
 
-    <!-- قسم الصور -->
-    <div class="gallery">
-        <img src="https://d.top4top.io/p_32782mr2m0.jpg" alt="تصميم 1">
-        <img src="https://e.top4top.io/p_3278xd4771.jpg" alt="تصميم 2">
-        <img src="https://f.top4top.io/p_3278l2o8f2.jpg" alt="تصميم 3">
-        <img src="https://g.top4top.io/p_3278nj05j3.jpg" alt="تصميم 4">
+    <!-- معرض الصور -->
+    <div class="content">
+        <div class="gallery">
+            <img src="https://c.top4top.io/p_32787ftyq0.jpg" alt="تصميم 1" onclick="openLightbox(this)">
+            <img src="https://d.top4top.io/p_3278744nc1.jpg" alt="تصميم 2" onclick="openLightbox(this)">
+            <img src="https://e.top4top.io/p_3278zt0kp2.jpg" alt="تصميم 3" onclick="openLightbox(this)">
+            <img src="https://f.top4top.io/p_32787t2523.jpg" alt="تصميم 4" onclick="openLightbox(this)">
+        </div>
     </div>
 
-    <!-- النافذة المنبثقة -->
-    <div class="modal" id="imageModal">
-        <span class="close" id="closeModal">&times;</span>
-        <img id="modalImage" src="" alt="عرض الصورة">
+    <!-- نافذة الصور المكبرة -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close">&times;</span>
+        <img id="lightboxImage" src="" alt="صورة مكبرة">
     </div>
 
     <script>
-        // عرض الصورة في النافذة
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const closeModal = document.getElementById('closeModal');
-        const galleryImages = document.querySelectorAll('.gallery img');
+        function openLightbox(image) {
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImage = document.getElementById('lightboxImage');
+            lightboxImage.src = image.src;
+            lightbox.style.display = 'flex';
+        }
 
-        galleryImages.forEach(img => {
-            img.addEventListener('click', () => {
-                modal.style.display = 'flex';
-                modalImage.src = img.src;
-            });
-        });
-
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+        function closeLightbox() {
+            var lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+        }
     </script>
+
 </body>
 </html>

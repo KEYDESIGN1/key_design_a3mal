@@ -12,13 +12,11 @@
             box-sizing: border-box;
         }
 
-        /* تخصيص الألوان عبر المتغيرات */
         :root {
             --main-color: #000000;
             --background-color: #f7f7f7;
             --top-bar-bg: rgba(0, 0, 0, 0.8);
             --border-thickness: 1px;
-            --section-one-bg: #000000;
         }
 
         body, html {
@@ -26,7 +24,12 @@
             width: 100%;
             font-family: 'The Sans', sans-serif;
             background-color: var(--background-color);
-            position: relative; /* مهم لجعل الخلفية تظهر في خلفية الصفحة */
+            position: relative;
+            background-image: url('https://j.top4top.io/p_3272n7klb0.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: transparent;
         }
 
         /* الشريط العلوي */
@@ -42,37 +45,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background-color 0.3s ease-in-out;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
             border-bottom-left-radius: 15px;
             border-bottom-right-radius: 15px;
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .top-bar .logo {
-            height: 30px;
-            margin-right: 20px;
-        }
-
         .top-bar .logo img {
-            height: 100%;
+            height: 30px;
             border-radius: 50%;
         }
 
-        /* تخصيص الأيقونات */
         .social-icons {
             display: flex;
-        }
-
-        .social-icons a {
-            margin: 0 10px;
-            text-decoration: none;
         }
 
         .social-icons img {
             width: 30px;
             height: 30px;
+            margin: 0 10px;
             transition: transform 0.3s ease;
             filter: invert(1);
         }
@@ -81,35 +71,22 @@
             transform: scale(1.2);
         }
 
-        /* الخلفية */
-        .background {
-            width: 100%;
-            height: 100vh;
-            background-image: url('https://j.top4top.io/p_3272n7klb0.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            position: absolute; /* تحديد أن الخلفية تكون ثابتة في الصفحة */
-            top: 0;
-            left: 0;
-            z-index: -1; /* التأكد من أن الخلفية تكون تحت جميع العناصر */
-        }
-
-        /* تنسيق المحتوى */
+        /* المحتوى */
         .content {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding-top: 200px;
+            padding-top: 150px;
+            padding-bottom: 40px;
+            z-index: 1; /* التأكد من أن المحتوى يظهر فوق الخلفية */
         }
 
-        /* الشعار */
         .logo-container {
             width: 150px;
             height: 150px;
-            background-color: white;
+            background-color: transparent;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -125,7 +102,6 @@
             object-fit: cover;
         }
 
-        /* النص */
         .heading {
             font-size: 32px;
             font-weight: bold;
@@ -138,13 +114,12 @@
             color: var(--main-color);
         }
 
-        /* تنسيق المعرض */
+        /* معرض الصور */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 0; /* إزالة الفواصل بين الصور */
-            margin-top: -120px;
-            margin-bottom: 40px;
+            margin-top: 40px;
         }
 
         .gallery img {
@@ -181,7 +156,6 @@
             border-radius: 10px;
         }
 
-        /* زر الإغلاق */
         .lightbox .close {
             position: absolute;
             top: 20px;
@@ -194,13 +168,12 @@
         .lightbox .close:hover {
             transform: scale(1.1);
         }
-
     </style>
 </head>
 <body>
 
-    <!-- الشريط العلوي مع الشعار وأيقونات التواصل الاجتماعي -->
-    <div class="top-bar" id="topBar">
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
         <div class="logo">
             <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">
         </div>
@@ -220,9 +193,6 @@
         </div>
     </div>
 
-    <!-- الخلفية -->
-    <div class="background"></div>
-
     <!-- المحتوى -->
     <div class="content">
         <div class="logo-container">
@@ -233,13 +203,11 @@
     </div>
 
     <!-- معرض الصور -->
-    <div class="content">
-        <div class="gallery">
-            <img src="https://c.top4top.io/p_32787ftyq0.jpg" alt="تصميم 1" onclick="openLightbox(this)">
-            <img src="https://d.top4top.io/p_3278744nc1.jpg" alt="تصميم 2" onclick="openLightbox(this)">
-            <img src="https://e.top4top.io/p_3278zt0kp2.jpg" alt="تصميم 3" onclick="openLightbox(this)">
-            <img src="https://f.top4top.io/p_32787t2523.jpg" alt="تصميم 4" onclick="openLightbox(this)">
-        </div>
+    <div class="gallery">
+        <img src="https://c.top4top.io/p_32787ftyq0.jpg" alt="تصميم 1" onclick="openLightbox(this)">
+        <img src="https://d.top4top.io/p_3278744nc1.jpg" alt="تصميم 2" onclick="openLightbox(this)">
+        <img src="https://e.top4top.io/p_3278zt0kp2.jpg" alt="تصميم 3" onclick="openLightbox(this)">
+        <img src="https://f.top4top.io/p_32787t2523.jpg" alt="تصميم 4" onclick="openLightbox(this)">
     </div>
 
     <!-- نافذة الصور المكبرة -->

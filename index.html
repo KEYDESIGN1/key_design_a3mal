@@ -30,6 +30,9 @@
             background-position: center;
             background-attachment: fixed;
             background-color: transparent;
+            -webkit-user-select: none; /* تعطيل التحديد في متصفحات ويب الكروم */
+            -moz-user-select: none; /* تعطيل التحديد في فايرفوكس */
+            -ms-user-select: none; /* تعطيل التحديد في متصفح إيدج */
         }
 
         .top-bar {
@@ -203,11 +206,6 @@
         <img src="https://d.top4top.io/p_3278744nc1.jpg" alt="تصميم 2" onclick="openLightbox(this)">
         <img src="https://e.top4top.io/p_3278zt0kp2.jpg" alt="تصميم 3" onclick="openLightbox(this)">
         <img src="https://f.top4top.io/p_32787t2523.jpg" alt="تصميم 4" onclick="openLightbox(this)">
-    <img src="https://a.top4top.io/p_3282u1xzx0.jpg" alt="تصميم 5" onclick="openLightbox(this)">
-
-
-
-        
     </div>
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
@@ -227,6 +225,11 @@
             var lightbox = document.getElementById('lightbox');
             lightbox.style.display = 'none';
         }
+
+        // منع النقر بالزر الأيمن
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
     </script>
 
 </body>

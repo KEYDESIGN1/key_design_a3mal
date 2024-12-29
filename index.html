@@ -239,7 +239,7 @@
     </div>
 
     <!-- معرض الصور -->
-    <div class="gallery">
+    <div class="gallery" id="gallery">
         <img src="https://c.top4top.io/p_32787ftyq0.jpg" alt="تصميم 1" onclick="openLightbox(this)">
         <img src="https://d.top4top.io/p_3278744nc1.jpg" alt="تصميم 2" onclick="openLightbox(this)">
         <img src="https://e.top4top.io/p_3278zt0kp2.jpg" alt="تصميم 3" onclick="openLightbox(this)">
@@ -247,7 +247,7 @@
         <img src="https://e.top4top.io/p_3282bl3jb0.jpg" alt="تصميم 5" onclick="openLightbox(this)">
         <img src="https://f.top4top.io/p_32848n9yf0.jpg" alt="تصميم 6" onclick="openLightbox(this)">
         <img src="https://g.top4top.io/p_3284eia311.jpg" alt="تصميم 7" onclick="openLightbox(this)">
-   <img src="https://i.top4top.io/p_3285xoyy80.jpg" alt="تصميم 7" onclick="openLightbox(this)">
+        <img src="https://i.top4top.io/p_3285xoyy80.jpg" alt="تصميم 7" onclick="openLightbox(this)">
     </div>
 
     <!-- نافذة الصور المكبرة -->
@@ -270,6 +270,21 @@
             const lightbox = document.getElementById('lightbox');
             lightbox.style.display = 'none';
         }
+
+        // تحديث عداد الصور
+        function updateImageCounter() {
+            const gallery = document.getElementById('gallery');
+            const imageCounter = document.getElementById('imageCounter');
+            const imageCount = gallery.getElementsByTagName('img').length;
+            imageCounter.textContent = `عدد الصور: ${imageCount}`;
+        }
+
+        // تحديث عداد الصور عند تحميل الصفحة
+        window.onload = updateImageCounter;
+
+        // تحديث عداد الصور عندما يتم إضافة أو إزالة صورة
+        const observer = new MutationObserver(updateImageCounter);
+        observer.observe(document.getElementById('gallery'), { childList: true });
     </script>
 
 </body>

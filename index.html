@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>معرض أعمالي</title>
-    <!-- إضافة خط "The Sans" -->
     <link href="https://fonts.googleapis.com/css2?family=The+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* ===================== إعدادات عامة ===================== */
         * {
             margin: 0;
             padding: 0;
@@ -26,7 +24,6 @@
             --counter-text-color: #fff;
         }
 
-        /* ===================== إعدادات الخلفية ===================== */
         body, html {
             height: 100%;
             width: 100%;
@@ -38,7 +35,6 @@
             background-attachment: fixed;
         }
 
-        /* ===================== إعدادات الشريط العلوي ===================== */
         .top-bar {
             position: fixed;
             top: 0;
@@ -61,34 +57,47 @@
             border-radius: 50%;
         }
 
-        /* ===================== إعدادات الأيقونات الاجتماعية ===================== */
         .social-icons {
             display: flex;
         }
 
         .social-icons img {
-            width: 40px; /* حجم الأيقونات أكبر */
-            height: 40px; /* حجم الأيقونات أكبر */
+            width: 40px;
+            height: 40px;
             margin: 0 12px;
             transition: transform 0.3s ease, filter 0.3s ease;
             filter: invert(1);
-            object-fit: cover; /* إزالة التشوه */
-            border-radius: 50%; /* انحناء دائري */
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .social-icons img:hover {
             transform: scale(1.2);
-            filter: brightness(1.2); /* تحسين الإضاءة عند التمرير */
+            filter: brightness(1.2);
         }
 
-        /* ===================== إعدادات المحتوى ===================== */
+        /* أيقونة أسفل الشريط العلوي */
+        .icon-container {
+            position: absolute;
+            top: 80px; /* تم تعديل المسافة إلى 80px */
+            right: 10px;
+            z-index: 1000;
+        }
+
+        .icon-container img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
         .content {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding-top: 140px; /* تم تعديل المسافة هنا */
+            padding-top: 140px;
             padding-bottom: 20px;
         }
 
@@ -123,12 +132,11 @@
             margin-bottom: 20px;
         }
 
-        /* ===================== إعدادات معلومات المعرض ===================== */
         .gallery-info {
             width: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 4px 20px; /* تم تقليل المسافة لجعل الارتفاع مثل الشريط العلوي */
+            padding: 4px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -147,7 +155,6 @@
             color: var(--counter-text-color);
         }
 
-        /* ===================== إعدادات المعرض (الصور) ===================== */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -170,7 +177,6 @@
             filter: var(--image-hover-filter);
         }
 
-        /* ===================== إعدادات نافذة الصور المكبرة ===================== */
         .lightbox {
             display: none;
             position: fixed;
@@ -206,7 +212,6 @@
 </head>
 <body oncontextmenu="return false;">
 
-    <!-- الشريط العلوي مع الأيقونات -->
     <div class="top-bar">
         <div class="logo">
             <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">
@@ -227,7 +232,13 @@
         </div>
     </div>
 
-    <!-- محتوى الصفحة -->
+    <!-- أيقونة أسفل الشريط العلوي -->
+    <div class="icon-container" style="top: 80px;">
+        <a href="https://keydesign1.github.io/-ey_design_twasl/" target="_blank">
+            <img src="https://d.top4top.io/p_3286vs1730.png" alt="أيقونة إضافية">
+        </a>
+    </div>
+
     <div class="content">
         <div class="logo-container">
             <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">
@@ -236,12 +247,10 @@
         <div class="subheading">هنا سترون بعض العلامات التجارية التي صممناها</div>
     </div>
 
-    <!-- معلومات المعرض (عداد الصور) -->
     <div class="gallery-info">
         <div class="image-counter" id="imageCounter">عدد الصور: 7</div>
     </div>
 
-    <!-- معرض الصور -->
     <div class="gallery" id="gallery">
         <img src="https://c.top4top.io/p_32787ftyq0.jpg" alt="تصميم 1" onclick="openLightbox(this)">
         <img src="https://d.top4top.io/p_3278744nc1.jpg" alt="تصميم 2" onclick="openLightbox(this)">
@@ -252,14 +261,12 @@
         <img src="https://i.top4top.io/p_3285xoyy80.jpg" alt="تصميم 7" onclick="openLightbox(this)">
     </div>
 
-    <!-- نافذة الصور المكبرة -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <span class="close" onclick="closeLightbox()">×</span>
         <img id="lightboxImage" src="" alt="الصورة المكبرة">
     </div>
 
     <script>
-        // فتح نافذة الصورة المكبرة
         function openLightbox(image) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightboxImage');
@@ -267,13 +274,11 @@
             lightboxImage.src = image.src;
         }
 
-        // إغلاق نافذة الصورة المكبرة
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.style.display = 'none';
         }
 
-        // تحديث عداد الصور
         function updateImageCounter() {
             const gallery = document.getElementById('gallery');
             const imageCounter = document.getElementById('imageCounter');
@@ -281,10 +286,8 @@
             imageCounter.textContent = `عدد الصور: ${imageCount}`;
         }
 
-        // تحديث عداد الصور عند تحميل الصفحة
         window.onload = updateImageCounter;
 
-        // تحديث عداد الصور عندما يتم إضافة أو إزالة صورة
         const observer = new MutationObserver(updateImageCounter);
         observer.observe(document.getElementById('gallery'), { childList: true });
     </script>

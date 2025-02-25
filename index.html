@@ -1,323 +1,319 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معرض أعمالي</title>
-    <link href="https://fonts.googleapis.com/css2?family=The+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        :root {
-            --main-color: #000000;
-            --background-color: #f7f7f7;
-            --top-bar-bg: rgba(0, 0, 0, 0.8);
-            --border-thickness: 1px;
-            --image-border-color: #000000;
-            --image-hover-filter: brightness(0.7);
-            --lightbox-bg: rgba(0, 0, 0, 0.8);
-            --counter-bg: #000;
-            --counter-text-color: #fff;
-        }
-        body, html {
-            height: 100%;
-            width: 100%;
-            font-family: 'The Sans', sans-serif;
-            background-color: var(--background-color);
-            background-image: url('https://j.top4top.io/p_3272n7klb0.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
+<!DOCTYPE html>  <html lang="ar">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>معرض أعمالي</title>  
+    <link href="https://fonts.googleapis.com/css2?family=The+Sans:wght@400;700&display=swap" rel="stylesheet">  
+    <style>  
+        * {  
+            margin: 0;  
+            padding: 0;  
+            box-sizing: border-box;  
+        }  
+        :root {  
+            --main-color: #000000;  
+            --background-color: #f7f7f7;  
+            --top-bar-bg: rgba(0, 0, 0, 0.8);  
+            --border-thickness: 1px;  
+            --image-border-color: #000000;  
+            --image-hover-filter: brightness(0.7);  
+            --lightbox-bg: rgba(0, 0, 0, 0.8);  
+            --counter-bg: #000;  
+            --counter-text-color: #fff;  
+        }  
+        body, html {  
+            height: 100%;  
+            width: 100%;  
+            font-family: 'The Sans', sans-serif;  
+            background-color: var(--background-color);  
+            background-image: url('https://j.top4top.io/p_3272n7klb0.jpg');  
+            background-size: cover;  
+            background-position: center;  
+            background-attachment: fixed;  
+        }  .top-bar {  
+        position: fixed;  
+        top: 0;  
+        left: 0;  
+        width: 100%;  
+        background-color: var(--top-bar-bg);  
+        color: white;  
+        padding: 8px 20px;  
+        z-index: 1000;  
+        display: flex;  
+        justify-content: space-between;  
+        align-items: center;  
+        border-bottom-left-radius: 15px;  
+        border-bottom-right-radius: 15px;  
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);  
+    }  
 
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--top-bar-bg);
-            color: white;
-            padding: 8px 20px;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-        }
+    .top-bar .logo img {  
+        height: 30px;  
+        border-radius: 50%;  
+    }  
 
-        .top-bar .logo img {
-            height: 30px;
-            border-radius: 50%;
-        }
+    .social-icons {  
+        display: flex;  
+    }  
 
-        .social-icons {
-            display: flex;
-        }
+    .social-icons img {  
+        width: 40px;  
+        height: 40px;  
+        margin: 0 12px;  
+        transition: transform 0.3s ease, filter 0.3s ease;  
+        filter: invert(1);  
+        object-fit: cover;  
+        border-radius: 50%;  
+    }  
 
-        .social-icons img {
-            width: 40px;
-            height: 40px;
-            margin: 0 12px;
-            transition: transform 0.3s ease, filter 0.3s ease;
-            filter: invert(1);
-            object-fit: cover;
-            border-radius: 50%;
-        }
+    .social-icons img:hover {  
+        transform: scale(1.2);  
+        filter: brightness(1.2);  
+    }  
 
-        .social-icons img:hover {
-            transform: scale(1.2);
-            filter: brightness(1.2);
-        }
+    .content {  
+        display: flex;  
+        flex-direction: column;  
+        align-items: center;  
+        justify-content: center;  
+        text-align: center;  
+        padding-top: 140px;  
+        padding-bottom: 20px;  
+    }  
 
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-top: 140px;
-            padding-bottom: 20px;
-        }
+    .logo-container {  
+        width: 150px;  
+        height: 150px;  
+        border-radius: 50%;  
+        display: flex;  
+        justify-content: center;  
+        align-items: center;  
+        overflow: hidden;  
+        margin-bottom: 20px;  
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);  
+    }  
 
-        .logo-container {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
+    .logo-container img {  
+        width: 100%;  
+        height: 100%;  
+        object-fit: cover;  
+    }  
 
-        .logo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .heading {  
+        font-size: 32px;  
+        font-weight: bold;  
+        color: var(--main-color);  
+        margin-bottom: 10px;  
+    }  
 
-        .heading {
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--main-color);
-            margin-bottom: 10px;
-        }
+    .subheading {  
+        font-size: 18px;  
+        color: var(--main-color);  
+        margin-bottom: 20px;  
+    }  
 
-        .subheading {
-            font-size: 18px;
-            color: var(--main-color);
-            margin-bottom: 20px;
-        }
+    .gallery-info {  
+        width: 100%;  
+        background-color: rgba(0, 0, 0, 0.8);  
+        color: white;  
+        padding: 4px 20px;  
+        display: flex;  
+        justify-content: space-between;  
+        align-items: center;  
+        border-bottom-left-radius: 15px;  
+        border-bottom-right-radius: 15px;  
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);  
+    }  
 
-        .gallery-info {
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 4px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-        }
+    .image-counter {  
+        font-size: 18px;  
+        font-weight: bold;  
+        background-color: var(--counter-bg);  
+        padding: 8px 20px;  
+        border-radius: 10px;  
+        font-family: 'The Sans', sans-serif;  
+        color: var(--counter-text-color);  
+    }  
 
-        .image-counter {
-            font-size: 18px;
-            font-weight: bold;
-            background-color: var(--counter-bg);
-            padding: 8px 20px;
-            border-radius: 10px;
-            font-family: 'The Sans', sans-serif;
-            color: var(--counter-text-color);
-        }
+    .gallery {  
+        display: grid;  
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  
+        gap: 10px;  
+        margin: 20px;  
+    }  
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 10px;
-            margin: 20px;
-        }
+    .gallery img {  
+        width: 100%;  
+        height: 100%;  
+        object-fit: cover;  
+        border: var(--border-thickness) solid var(--image-border-color);  
+        transition: transform 0.3s ease, filter 0.3s ease;  
+        cursor: pointer;  
+        border-radius: 5%;  
+    }  
 
-        .gallery img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border: var(--border-thickness) solid var(--image-border-color);
-            transition: transform 0.3s ease, filter 0.3s ease;
-            cursor: pointer;
-            border-radius: 5%;
-        }
+    .gallery img:hover {  
+        transform: scale(1.05);  
+        filter: var(--image-hover-filter);  
+    }  
 
-        .gallery img:hover {
-            transform: scale(1.05);
-            filter: var(--image-hover-filter);
-        }
+    .lightbox {  
+        display: none;  
+        position: fixed;  
+        top: 0;  
+        left: 0;  
+        width: 100%;  
+        height: 100%;  
+        background-color: var(--lightbox-bg);  
+        z-index: 1000;  
+        justify-content: center;  
+        align-items: center;  
+        display: flex;  
+        flex-direction: column;  
+    }  
 
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--lightbox-bg);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-        }
+    .lightbox .close {  
+        position: absolute;  
+        top: 20px;  
+        right: 20px;  
+        color: white;  
+        font-size: 30px;  
+        cursor: pointer;  
+    }  
 
-        .lightbox .close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-        }
+    .lightbox .close:hover {  
+        transform: scale(1.1);  
+    }  
 
-        .lightbox .close:hover {
-            transform: scale(1.1);
-        }
+    .lightbox-container {  
+        display: flex;  
+        justify-content: center;  
+        align-items: center;  
+        gap: 20px;  
+        flex-direction: column;  
+    }  
 
-        .lightbox-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-direction: column;
-        }
+    .lightbox-container img {  
+        width: 70%;  
+        max-width: 800px;  
+        height: auto;  
+        border-radius: 10px;  
+    }  
 
-        .lightbox-container img {
-            width: 70%;
-            max-width: 800px;
-            height: auto;
-            border-radius: 10px;
-        }
+    .thumbnail-bar {  
+        display: flex;  
+        gap: 10px;  
+        overflow-x: auto;  
+        padding: 10px;  
+        background-color: rgba(0, 0, 0, 0.85);  
+        border-radius: 10px;  
+        justify-content: center;  
+        margin-top: 20px;  
+        width: 100%;  
+    }  
 
-        .thumbnail-bar {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding: 10px;
-            background-color: rgba(0, 0, 0, 0.85);
-            border-radius: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
+    .thumbnail-bar img {  
+        width: 80px;  
+        height: auto;  
+        cursor: pointer;  
+        border-radius: 5px;  
+        transition: transform 0.3s ease, filter 0.3s ease;  
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  
+    }  
 
-        .thumbnail-bar img {
-            width: 80px;
-            height: auto;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: transform 0.3s ease, filter 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+    .thumbnail-bar img:hover {  
+        transform: scale(1.1);  
+        filter: brightness(1.2);  
+    }  
 
-        .thumbnail-bar img:hover {
-            transform: scale(1.1);
-            filter: brightness(1.2);
-        }
-    </style>
-</head>
-<body oncontextmenu="return false;">
-    <div class="top-bar">
-        <div class="logo">
-            <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">
-        </div>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/key_design_am/" target="_blank">
-                <img src="https://e.top4top.io/p_3289gvqk60.png" alt="إنستجرام">
-            </a>
-            <a href="https://www.tiktok.com/@key_design7" target="_blank">
-                <img src="https://f.top4top.io/p_3286veqcz2.png" alt="تيك توك">
-            </a>
-            <a href="https://wa.me/966545473980" target="_blank">
-                <img src="https://e.top4top.io/p_3286lpy0w1.png" alt="واتساب">
-            </a>
-            <a href="mailto:keydesignam@gmail.com" target="_blank">
-                <img src="https://d.top4top.io/p_3286cgw8r0.png" alt="بريد إلكتروني">
-            </a>
-        </div>
-    </div>
-    <div class="content">
-        <div class="logo-container">
-            <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">
-        </div>
-        <div class="heading">مرحبًا بكم في معرض أعمالي</div>
-        <div class="subheading">هنا تجد مجموعة من الأعمال الإبداعية التي قمت بتنفيذها</div>
-        <div class="gallery-info">
-            <div>المعرض الفني</div>
-            <div class="image-counter" id="image-counter">عدد الصور: 0</div>
-        </div>
-        <div class="gallery">
-            <!-- 23 صور -->
-            <img src="https://e.top4top.io/p_3343gkr5j0.jpg" alt="صورة 1" data-thumbnails='["https://e.top4top.io/p_3343gkr5j0.jpg",https://e.top4top.io/p_3343gkr5j0.jpg",https://e.top4top.io/p_3343gkr5j0.jpg",https://e.top4top.io/p_3343gkr5j0.jpg",https://e.top4top.io/p_3343gkr5j0.jpg",https://e.top4top.io/p_3343gkr5j0.jpg",https://e.top4top.io/p_3343gkr5j0.jpg", "https://f.top4top.io/p_32735frfq0.jpg"]' onclick="openLightbox(this)">
-            <img src="https://f.top4top.io/p_32735frfq0.jpg" alt="صورة 2" data-thumbnails='["https://f.top4top.io/p_3273gkli00.jpg", "https://f.top4top.io/p_32735frfq0.jpg"]' onclick="openLightbox(this)">
-            <!-- باقي الصور ... -->
-        </div>
-    </div>
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-container">
-            <span class="close" onclick="closeLightbox()">&times;</span>
-            <img id="lightbox-img" src="" alt="صورة مكبرة">
-        </div>
-        <div class="thumbnail-bar" id="thumbnail-bar"></div>
-    </div>
+</style>
 
-    <script>
-        const galleryImages = document.querySelectorAll('.gallery img');
-        const imageCounter = document.getElementById('image-counter');
-        const thumbnailBar = document.getElementById('thumbnail-bar');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightbox-img');
-        const thumbnailBarContainer document.querySelector('.thumbnail-bar');
+</head>  
+<body oncontextmenu="return false;">  
+    <div class="top-bar">  
+        <div class="logo">  
+            <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">  
+        </div>  
+        <div class="social-icons">  
+            <a href="https://www.instagram.com/key_design_am/" target="_blank">  
+                <img src="https://e.top4top.io/p_3289gvqk60.png" alt="إنستجرام">  
+            </a>  
+            <a href="https://www.tiktok.com/@key_design7" target="_blank">  
+                <img src="https://f.top4top.io/p_3286veqcz2.png" alt="تيك توك">  
+            </a>  
+            <a href="https://wa.me/966545473980" target="_blank">  
+                <img src="https://e.top4top.io/p_3286lpy0w1.png" alt="واتساب">  
+            </a>  
+            <a href="mailto:keydesignam@gmail.com" target="_blank">  
+                <img src="https://d.top4top.io/p_3286cgw8r0.png" alt="بريد إلكتروني">  
+            </a>  
+        </div>  
+    </div>  
+    <div class="content">  
+        <div class="logo-container">  
+            <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">  
+        </div>  
+        <div class="heading">مرحبًا بكم في معرض أعمالي</div>  
+        <div class="subheading">هنا تجد مجموعة من الأعمال الإبداعية التي قمت بتنفيذها</div>  
+        <div class="gallery-info">  
+            <div>المعرض الفني</div>  
+            <div class="image-counter">عدد الصور: 23</div>  
+        </div>  
+        <div class="gallery">  
+            <!-- 23 صور -->  
+            <img src="https://f.top4top.io/p_3273gkli00.jpg" alt="صورة 1" data-thumbnails='["https://f.top4top.io/p_3273gkli00.jpg", "https://f.top4top.io/p_32735frfq0.jpg"]' onclick="openLightbox(this)">  
+            <img src="https://f.top4top.io/p_32735frfq0.jpg" alt="صورة 2" data-thumbnails='["https://f.top4top.io/p_3273gkli00.jpg", "https://f.top4top.io/p_32735frfq0.jpg"]' onclick="openLightbox(this)">  
+            <!-- باقي الصور ... -->  
+        </div>  
+    </div>  
+    <div class="lightbox" id="lightbox">  
+        <div class="lightbox-container">  
+            <span class="close" onclick="closeLightbox()">&times;</span>  
+            <img id="lightbox-img" src="" alt="صورة مكبرة">  
+        </div>  
+        <div class="thumbnail-bar" id="thumbnail-bar"></div>  
+    </div>  <script>  
+    const galleryImages = document.querySelectorAll('.gallery img');  
+    const thumbnailBar = document.getElementById('thumbnail-bar');  
+    const lightbox = document.getElementById('lightbox');  
+    const lightboxImage = document.getElementById('lightbox-img');  
+    const thumbnailBarContainer = document.querySelector('.thumbnail-bar');  
 
-        lightbox.style.display = 'none';
+    lightbox.style.display = 'none';  
 
-        // Update the image counter dynamically
-        imageCounter.textContent = `عدد الصور: ${galleryImages.length}`;
+    function openLightbox(image) {  
+        lightboxImage.src = image.src;  
+        lightbox.style.display = 'flex';  
 
-        function openLightbox(image) {
-            lightboxImage.src = image.src;
-            lightbox.style.display = 'flex';
+        const thumbnails = JSON.parse(image.getAttribute('data-thumbnails'));  
 
-            const thumbnails = JSON.parse(image.getAttribute('data-thumbnails'));
+        // Update width of the thumbnail bar to match the width of the lightbox image  
+        thumbnailBarContainer.style.width = `${lightboxImage.offsetWidth}px`;  
 
-            // Update width of the thumbnail bar to match the width of the lightbox image
-            thumbnailBarContainer.style.width = `${lightboxImage.width}px`;
+        // Populate thumbnail bar with the specific thumbnails for the clicked image  
+        thumbnailBar.innerHTML = '';  
+        thumbnails.forEach(thumbSrc => {  
+            const thumbnail = document.createElement('img');  
+            thumbnail.src = thumbSrc;  
+            thumbnail.alt = `صورة مصغرة`;  
+            thumbnail.onclick = () => {  
+                lightboxImage.src = thumbSrc;  
+            };  
+            thumbnailBar.appendChild(thumbnail);  
+        });  
+    }  
 
-            // Populate thumbnail bar with the specific thumbnails for the clicked image
-            thumbnailBar.innerHTML = '';
-            thumbnails.forEach(thumbSrc => {
-                const thumbnail = document.createElement('img');
-                thumbnail.src = thumbSrc;
-                thumbnail.alt = `صورة مصغرة`;
-                thumbnail.onclick = () => {
-                    lightboxImage.src = thumbSrc;
-                };
-                thumbnailBar.appendChild(thumbnail);
-            });
-        }
+    function closeLightbox() {  
+        lightbox.style.display = 'none';  
+    }  
 
-        function closeLightbox() {
-            lightbox.style.display = 'none';
-        }
+    window.onclick = function(event) {  
+        if (event.target === lightbox) {  
+            closeLightbox();  
+        }  
+    };  
+</script>
 
-        window.onclick = function(event) {
-            if (event.target === lightbox) {
-                closeLightbox();
-            }
-        };
-    </script>
-</body>
-</html>
+</body>  
+</html>  شفت هذا الكود اريدك ان تضيف فيه صور لكن هذه الصور اريدك ان تستخرج روابطها من كود اخر تستطيع؟
+

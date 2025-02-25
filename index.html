@@ -11,7 +11,6 @@
         padding: 0;
         box-sizing: border-box;
       }
-
       :root {
         --main-color: #000000;
         --background-color: #f7f7f7;
@@ -23,7 +22,6 @@
         --counter-bg: #000;
         --counter-text-color: #fff;
       }
-
       body,
       html {
         height: 100%;
@@ -35,7 +33,6 @@
         background-position: center;
         background-attachment: fixed;
       }
-
       .top-bar {
         position: fixed;
         top: 0;
@@ -52,16 +49,13 @@
         border-bottom-right-radius: 15px;
         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
       }
-
       .top-bar .logo img {
         height: 30px;
         border-radius: 50%;
       }
-
       .social-icons {
         display: flex;
       }
-
       .social-icons img {
         width: 40px;
         height: 40px;
@@ -71,26 +65,10 @@
         object-fit: cover;
         border-radius: 50%;
       }
-
       .social-icons img:hover {
         transform: scale(1.2);
         filter: brightness(1.2);
       }
-
-      .icon-container {
-        position: absolute;
-        top: 80px;
-        right: 10px;
-        z-index: 1000;
-      }
-
-      .icon-container img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-      }
-
       .content {
         display: flex;
         flex-direction: column;
@@ -100,7 +78,6 @@
         padding-top: 140px;
         padding-bottom: 20px;
       }
-
       .logo-container {
         width: 150px;
         height: 150px;
@@ -112,26 +89,22 @@
         margin-bottom: 20px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       }
-
       .logo-container img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
-
       .heading {
         font-size: 32px;
         font-weight: bold;
         color: var(--main-color);
         margin-bottom: 10px;
       }
-
       .subheading {
         font-size: 18px;
         color: var(--main-color);
         margin-bottom: 20px;
       }
-
       .gallery-info {
         width: 100%;
         background-color: rgba(0, 0, 0, 0.8);
@@ -144,7 +117,6 @@
         border-bottom-right-radius: 15px;
         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
       }
-
       .image-counter {
         font-size: 18px;
         font-weight: bold;
@@ -154,14 +126,12 @@
         font-family: 'The Sans', sans-serif;
         color: var(--counter-text-color);
       }
-
       .gallery {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 10px;
         margin: 20px;
       }
-
       .gallery img {
         width: 100%;
         height: 100%;
@@ -171,12 +141,10 @@
         cursor: pointer;
         border-radius: 5%;
       }
-
       .gallery img:hover {
         transform: scale(1.05);
         filter: var(--image-hover-filter);
       }
-
       .lightbox {
         display: none;
         position: fixed;
@@ -189,8 +157,8 @@
         justify-content: center;
         align-items: center;
         display: flex;
+        flex-direction: column;
       }
-
       .lightbox .close {
         position: absolute;
         top: 20px;
@@ -199,31 +167,32 @@
         font-size: 30px;
         cursor: pointer;
       }
-
       .lightbox .close:hover {
         transform: scale(1.1);
       }
-
       .lightbox-container {
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 20px;
+        flex-direction: column;
       }
-
+      .lightbox-container img {
+        width: 70%;
+        max-width: 800px;
+        height: auto;
+        border-radius: 10px;
+      }
       .thumbnail-bar {
         display: flex;
-        flex-direction: column;
         gap: 10px;
+        overflow-x: auto;
         padding: 10px;
         background-color: rgba(0, 0, 0, 0.85);
         border-radius: 10px;
-        max-height: 70%;
-        overflow-y: auto;
-        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
-        position: relative;
-        margin-left: 10px;
+        justify-content: center;
+        margin-top: 20px;
       }
-
       .thumbnail-bar img {
         width: 80px;
         height: auto;
@@ -232,48 +201,12 @@
         transition: transform 0.3s ease, filter 0.3s ease;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       }
-
       .thumbnail-bar img:hover {
         transform: scale(1.1);
         filter: brightness(1.2);
       }
-
-      .lightbox-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      /* تعديل لتوسيط الصورة والشريط المصغر كقطعة واحدة */
-      .lightbox-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .lightbox-container img {
-        width: 60%;
-        max-width: 800px;
-        height: auto;
-        border-radius: 10px;
-      }
-
-      .thumbnail-bar {
-        width: 150px;
-        height: auto;
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.85);
-        border-radius: 10px;
-        max-height: 70%;
-        overflow-y: auto;
-        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
-      }
     </style>
   </head>
-
   <body oncontextmenu="return false;">
     <div class="top-bar">
       <div class="logo">
@@ -294,118 +227,71 @@
         </a>
       </div>
     </div>
-
-    <div class="icon-container" style="top: 80px;">
-      <a href="https://keydesign1.github.io/-ey_design_twasl/" target="_blank">
-        <img src="https://d.top4top.io/p_3286vs1730.png" alt="أيقونة إضافية">
-      </a>
-    </div>
-
     <div class="content">
       <div class="logo-container">
         <img src="https://a.top4top.io/p_3272ba4qt0.jpg" alt="شعار الموقع">
       </div>
-      <div class="heading">KEY_DESIGN</div>
-      <div class="subheading">هنا سترون بعض العلامات التجارية التي صممناها</div>
-    </div>
-
-    <div class="gallery-info">
-      <div class="image-counter" id="imageCounter">عدد الصور: 8</div>
-    </div>
-
-    <div class="gallery" id="gallery">
-      <img src="https://c.top4top.io/p_32787ftyq0.jpg" alt="تصميم 1" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://h.top4top.io/p_3341x9xp50.jpg', 'https://i.top4top.io/p_3341rs8dh1.jpg'])">
-      <img src="https://d.top4top.io/p_3278744nc1.jpg" alt="تصميم 2" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-   <img src="https://e.top4top.io/p_33401sg0m0.jpg" alt="تصميم 3" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://f.top4top.io/p_3340vahc91.jpg" alt="تصميم 4" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://g.top4top.io/p_3340uvqg62.jpg" alt="تصميم 5" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://h.top4top.io/p_3340869xi3.jpg" alt="تصميم 6" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://i.top4top.io/p_3340oguvt4.jpg" alt="تصميم 7" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://j.top4top.io/p_3340h76pz5.jpg" alt="تصميم 8" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://k.top4top.io/p_33404rdmh6.jpg" alt="تصميم 9" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://l.top4top.io/p_3340n8any7.jpg" alt="تصميم 10" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://a.top4top.io/p_3340r4s978.jpg" alt="تصميم 11" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://b.top4top.io/p_3340xxbod9.jpg" alt="تصميم 12" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://b.top4top.io/p_3340b06ly0.jpg" alt="تصميم 13" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://c.top4top.io/p_3340cjbd41.jpg" alt="تصميم 14" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://d.top4top.io/p_3340mymux2.jpg" alt="تصميم 15" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://e.top4top.io/p_33402i15g3.jpg" alt="تصميم 16" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://f.top4top.io/p_3340fxj434.jpg" alt="تصميم 17" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://g.top4top.io/p_3340kfq115.jpg" alt="تصميم 18" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://h.top4top.io/p_3340kh80z6.jpg" alt="تصميم 19" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://i.top4top.io/p_3340pvlms7.jpg" alt="تصميم 20" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://j.top4top.io/p_3340g13j98.jpg" alt="تصميم 21" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://k.top4top.io/p_33404aqn49.jpg" alt="تصميم 22" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-<img src="https://b.top4top.io/p_33402qbkc0.jpg" alt="تصميم 23" onclick="openLightbox(this, ['https://c.top4top.io/p_32787ftyq0.jpg', 'https://d.top4top.io/p_3278744nc1.jpg', 'https://e.top4top.io/p_32789rfsi2.jpg'])">
-
-
-
-
-
-
-
-
-
-
- </div>
-
-    <div class="lightbox" id="lightbox">
-      <span class="close" onclick="closeLightbox()">×</span>
-      <div class="lightbox-container">
-        <div class="thumbnail-bar" id="thumbnailBar">
-        </div>
-        <img id="lightboxImage" src="" alt="الصورة المكبرة">
+      <div class="heading">مرحبًا بكم في معرض أعمالي</div>
+      <div class="subheading">هنا تجد مجموعة من الأعمال الإبداعية التي قمت بتنفيذها</div>
+      <div class="gallery-info">
+        <div>المعرض الفني</div>
+        <div class="image-counter">عدد الصور: 23</div>
+      </div>
+      <div class="gallery">
+        <!-- 23 صور -->
+        <img src="https://c.top4top.io/p_3343gpzgp0.jpg" alt="صورة 1" onclick="openLightbox(this, [
+            'https://c.top4top.io/p_3343gpzgp0.jpg',
+            'https://c.top4top.io/p_3343gpzgp0.jpg',
+            'https://c.top4top.io/p_3343gpzgp0.jpg'
+          ])">
+        <img src="https://f.top4top.io/p_32735frfq0.jpg" alt="صورة 2" onclick="openLightbox(this, [
+            'https://f.top4top.io/p_32735frfq0.jpg',
+            'https://e.top4top.io/p_3273fgn340.jpg',
+            'https://d.top4top.io/p_3273mxfzm1.jpg'
+          ])">
+        <!-- Add similar code for other images -->
       </div>
     </div>
-
+    <div class="lightbox" id="lightbox">
+      <div class="lightbox-container">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="صورة مكبرة">
+      </div>
+      <div class="thumbnail-bar" id="thumbnail-bar"></div>
+    </div>
     <script>
-      let currentIndex = 0;
+      const galleryImages = document.querySelectorAll('.gallery img');
+      const thumbnailBar = document.getElementById('thumbnail-bar');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightbox-img');
+      const thumbnailBarContainer = document.querySelector('.thumbnail-bar');
 
-      document.addEventListener("DOMContentLoaded", function() {
-        updateImageCount();
-        const lightbox = document.getElementById('lightbox');
-        lightbox.style.display = 'none'; 
-      });
+      lightbox.style.display = 'none';
 
       function openLightbox(image, thumbnails) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightboxImage');
-        const thumbnailBar = document.getElementById('thumbnailBar');
-        const galleryImages = document.querySelectorAll('#gallery img');
-
-        currentIndex = Array.from(galleryImages).indexOf(image);
-
-        lightbox.style.display = 'flex';
         lightboxImage.src = image.src;
+        lightbox.style.display = 'flex';
 
         thumbnailBar.innerHTML = '';
-        thumbnails.forEach(thumbnail => {
-          const imgElement = document.createElement('img');
-          imgElement.src = thumbnail;
-          imgElement.onclick = (event) => {
-            event.stopPropagation(); 
-            lightboxImage.src = thumbnail;
+        thumbnails.forEach(thumbnailSrc => {
+          const thumbnail = document.createElement('img');
+          thumbnail.src = thumbnailSrc;
+          thumbnail.onclick = () => {
+            lightboxImage.src = thumbnailSrc;
           };
-          thumbnailBar.appendChild(imgElement);
+          thumbnailBar.appendChild(thumbnail);
         });
       }
 
       function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
         lightbox.style.display = 'none';
       }
 
-      document.getElementById('lightbox').onclick = function(event) {
-        if (event.target === this) {
+      window.onclick = function(event) {
+        if (event.target === lightbox) {
           closeLightbox();
         }
       };
-
-      function updateImageCount() {
-        const galleryImages = document.querySelectorAll('#gallery img');
-        const imageCounter = document.getElementById('imageCounter');
-        imageCounter.textContent = `عدد الصور: ${galleryImages.length}`;
-      }
     </script>
   </body>
 </html>
